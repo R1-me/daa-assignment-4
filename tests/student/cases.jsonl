@@ -1,0 +1,56 @@
+{"checks":"Empty prefix base case","input":{"task":"lcs","a":"","b":""},"expected":{"length":0,"sequence":""},"actual":{"sequence":"","length":0}}
+{"checks":"Empty prefix base case","input":{"task":"lcs","a":"","b":"abc"},"expected":{"length":0,"sequence":""},"actual":{"sequence":"","length":0}}
+{"checks":"Empty prefix base case","input":{"task":"lcs","a":"abc","b":""},"expected":{"length":0,"sequence":""},"actual":{"sequence":"","length":0}}
+{"checks":"Separated and repeated characters","input":{"task":"lcs","a":"aa!b!a","b":"aba"},"expected":{"length":3,"sequence":"aba"},"actual":{"sequence":"aba","length":3}}
+{"checks":"Two optimal subsequences","input":{"task":"lcs","a":"ab","b":"ba"},"expected":{"length":1,"sequence":"b"},"actual":{"sequence":"a","length":1}}
+{"checks":"No blocks","input":{"task":"merge","sizes":[]},"expected":{"cost":0,"plan":[]},"actual":{"cost":0,"plan":[]}}
+{"checks":"One block","input":{"task":"merge","sizes":[9]},"expected":{"cost":0,"plan":[]},"actual":{"cost":0,"plan":[]}}
+{"checks":"Zero-cost splits","input":{"task":"merge","sizes":[0,0,0]},"expected":{"cost":0,"plan":[[0,0,1],[0,1,2]]},"actual":{"cost":0,"plan":[[1,1,2],[0,0,2]]}}
+{"checks":"Smallest blocks are not adjacent; tied legal plans","input":{"task":"merge","sizes":[1,100,1]},"expected":{"cost":203,"plan":[[0,0,1],[0,1,2]]},"actual":{"cost":203,"plan":[[1,1,2],[0,0,2]]}}
+{"checks":"Replay merges in chronological order","input":{"task":"merge","sizes":[4,1,5,3]},"expected":{"cost":26,"plan":[[0,0,1],[2,2,3],[0,1,3]]},"actual":{"cost":26,"plan":[[0,0,1],[2,2,3],[0,1,3]]}}
+{"checks":"Total cost exceeds a signed 32-bit integer","input":{"task":"merge","sizes":[1000000000,1000000000,1000000000,1000000000]},"expected":{"cost":8000000000,"plan":[[0,0,1],[2,2,3],[0,1,3]]},"actual":{"cost":8000000000,"plan":[[0,0,1],[2,2,3],[0,1,3]]}}
+{"checks":"Empty tree","input":{"task":"tree","n":0,"weights":[],"edges":[]},"expected":{"weight":0,"selected":[]},"actual":{"selected":[],"weight":0}}
+{"checks":"Zero-weight singleton","input":{"task":"tree","n":1,"weights":[0],"edges":[]},"expected":{"weight":0,"selected":[]},"actual":{"selected":[],"weight":0}}
+{"checks":"Positive singleton","input":{"task":"tree","n":1,"weights":[7],"edges":[]},"expected":{"weight":7,"selected":[0]},"actual":{"selected":[0],"weight":7}}
+{"checks":"All negative","input":{"task":"tree","n":3,"weights":[-4,-2,-8],"edges":[[2,1],[1,0]]},"expected":{"weight":0,"selected":[]},"actual":{"selected":[],"weight":0}}
+{"checks":"Two optimal one-vertex choices","input":{"task":"tree","n":2,"weights":[4,4],"edges":[[0,1]]},"expected":{"weight":4,"selected":[0]},"actual":{"selected":[1],"weight":4}}
+{"checks":"An adjacent zero-weight vertex is still forbidden","input":{"task":"tree","n":2,"weights":[4,0],"edges":[[0,1]]},"expected":{"weight":4,"selected":[0]},"actual":{"selected":[0],"weight":4}}
+{"checks":"64-bit star optimum","input":{"task":"tree","n":4,"weights":[-1,1000000000,1000000000,1000000000],"edges":[[1,0],[2,0],[0,3]]},"expected":{"weight":3000000000,"selected":[1,2,3]},"actual":{"selected":[1,2,3],"weight":3000000000}}
+{"checks":"Empty text and pattern","input":{"task":"naive","text":"","pattern":""},"expected":{"positions":[0]},"actual":{"positions":[0]}}
+{"checks":"Empty text and pattern","input":{"task":"kmp","text":"","pattern":""},"expected":{"positions":[0]},"actual":{"positions":[0]}}
+{"checks":"Empty text and pattern","input":{"task":"rk","text":"","pattern":""},"expected":{"positions":[0]},"actual":{"positions":[0]}}
+{"checks":"Include the final boundary","input":{"task":"naive","text":"hi","pattern":""},"expected":{"positions":[0,1,2]},"actual":{"positions":[0,1,2]}}
+{"checks":"Include the final boundary","input":{"task":"kmp","text":"hi","pattern":""},"expected":{"positions":[0,1,2]},"actual":{"positions":[0,1,2]}}
+{"checks":"Include the final boundary","input":{"task":"rk","text":"hi","pattern":""},"expected":{"positions":[0,1,2]},"actual":{"positions":[0,1,2]}}
+{"checks":"Empty text with nonempty pattern","input":{"task":"naive","text":"","pattern":"X"},"expected":{"positions":[]},"actual":{"positions":[]}}
+{"checks":"Empty text with nonempty pattern","input":{"task":"kmp","text":"","pattern":"X"},"expected":{"positions":[]},"actual":{"positions":[]}}
+{"checks":"Empty text with nonempty pattern","input":{"task":"rk","text":"","pattern":"X"},"expected":{"positions":[]},"actual":{"positions":[]}}
+{"checks":"Pattern too long","input":{"task":"naive","text":"ab","pattern":"abc"},"expected":{"positions":[]},"actual":{"positions":[]}}
+{"checks":"Pattern too long","input":{"task":"kmp","text":"ab","pattern":"abc"},"expected":{"positions":[]},"actual":{"positions":[]}}
+{"checks":"Pattern too long","input":{"task":"rk","text":"ab","pattern":"abc"},"expected":{"positions":[]},"actual":{"positions":[]}}
+{"checks":"Case and punctuation at the final start","input":{"task":"naive","text":"Aa! a! A!","pattern":"A!"},"expected":{"positions":[7]},"actual":{"positions":[7]}}
+{"checks":"Case and punctuation at the final start","input":{"task":"kmp","text":"Aa! a! A!","pattern":"A!"},"expected":{"positions":[7]},"actual":{"positions":[7]}}
+{"checks":"Case and punctuation at the final start","input":{"task":"rk","text":"Aa! a! A!","pattern":"A!"},"expected":{"positions":[7]},"actual":{"positions":[7]}}
+{"checks":"Quotes, spaces and backslashes","input":{"task":"naive","text":"\" \\!\" \\!","pattern":"\" \\!"},"expected":{"positions":[0,4]},"actual":{"positions":[0,4]}}
+{"checks":"Quotes, spaces and backslashes","input":{"task":"kmp","text":"\" \\!\" \\!","pattern":"\" \\!"},"expected":{"positions":[0,4]},"actual":{"positions":[0,4]}}
+{"checks":"Quotes, spaces and backslashes","input":{"task":"rk","text":"\" \\!\" \\!","pattern":"\" \\!"},"expected":{"positions":[0,4]},"actual":{"positions":[0,4]}}
+{"checks":"Overlapping matches","input":{"task":"naive","text":"aaaaa","pattern":"aaa"},"expected":{"positions":[0,1,2]},"actual":{"positions":[0,1,2]}}
+{"checks":"Overlapping matches","input":{"task":"kmp","text":"aaaaa","pattern":"aaa"},"expected":{"positions":[0,1,2]},"actual":{"positions":[0,1,2]}}
+{"checks":"Overlapping matches","input":{"task":"rk","text":"aaaaa","pattern":"aaa"},"expected":{"positions":[0,1,2]},"actual":{"positions":[0,1,2]}}
+{"checks":"Negative rolling remainder","input":{"task":"naive","text":"xaba","pattern":"ab"},"expected":{"positions":[1]},"actual":{"positions":[1]}}
+{"checks":"Negative rolling remainder","input":{"task":"kmp","text":"xaba","pattern":"ab"},"expected":{"positions":[1]},"actual":{"positions":[1]}}
+{"checks":"Negative rolling remainder","input":{"task":"rk","text":"xaba","pattern":"ab"},"expected":{"positions":[1]},"actual":{"positions":[1]}}
+{"checks":"Reject the dj collision with ab","input":{"task":"naive","text":"abdj","pattern":"ab"},"expected":{"positions":[0]},"actual":{"positions":[0]}}
+{"checks":"Reject the dj collision with ab","input":{"task":"kmp","text":"abdj","pattern":"ab"},"expected":{"positions":[0]},"actual":{"positions":[0]}}
+{"checks":"Reject the dj collision with ab","input":{"task":"rk","text":"abdj","pattern":"ab"},"expected":{"positions":[0]},"actual":{"positions":[0]}}
+{"checks":"Empty suffix array","input":{"task":"suffix","text":""},"expected":{"sa":[],"lcp":[],"repeated":""},"actual":{"repeated":"","lcp":[],"sa":[]}}
+{"checks":"One printable suffix","input":{"task":"suffix","text":"$"},"expected":{"sa":[0],"lcp":[0],"repeated":""},"actual":{"repeated":"","lcp":[0],"sa":[0]}}
+{"checks":"Overlapping longest repeat","input":{"task":"suffix","text":"aaaaa"},"expected":{"sa":[4,3,2,1,0],"lcp":[0,1,2,3,4],"repeated":"aaaa"},"actual":{"repeated":"aaaa","lcp":[0,1,2,3,4],"sa":[4,3,2,1,0]}}
+{"checks":"Distinct ASCII suffixes","input":{"task":"suffix","text":"~ $!"},"expected":{"sa":[1,3,2,0],"lcp":[0,0,0,0],"repeated":""},"actual":{"repeated":"","lcp":[0,0,0,0],"sa":[1,3,2,0]}}
+{"checks":"Two equally long repeats","input":{"task":"suffix","text":"abXabYcdZcd"},"expected":{"sa":[2,5,8,0,3,1,4,9,6,10,7],"lcp":[0,0,0,0,2,0,1,0,2,0,1],"repeated":"ab"},"actual":{"repeated":"ab","lcp":[0,0,0,0,2,0,1,0,2,0,1],"sa":[2,5,8,0,3,1,4,9,6,10,7]}}
+{"checks":"Empty dictionary and texts","input":{"task":"aho","patterns":[],"texts":[]},"expected":{"counts":[]},"actual":{"counts":[]}}
+{"checks":"One empty row per text","input":{"task":"aho","patterns":[],"texts":["abc",""]},"expected":{"counts":[[],[]]},"actual":{"counts":[[],[]]}}
+{"checks":"Empty texts array","input":{"task":"aho","patterns":["ab"],"texts":[]},"expected":{"counts":[]},"actual":{"counts":[]}}
+{"checks":"Overlaps, duplicates and reset","input":{"task":"aho","patterns":["a","aa","aaa","aa"],"texts":["aaaa","","aaaa"]},"expected":{"counts":[[4,3,2,3],[0,0,0,0],[4,3,2,3]]},"actual":{"counts":[[4,3,2,3],[0,0,0,0],[4,3,2,3]]}}
+{"checks":"Count suffix-pattern matches","input":{"task":"aho","patterns":["he","she","hers"],"texts":["ushers"]},"expected":{"counts":[[1,1,1]]},"actual":{"counts":[[1,1,1]]}}
+{"checks":"No match across a text boundary","input":{"task":"aho","patterns":["ab"],"texts":["a","b"]},"expected":{"counts":[[0],[0]]},"actual":{"counts":[[0],[0]]}}
